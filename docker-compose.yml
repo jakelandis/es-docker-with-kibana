@@ -1,7 +1,7 @@
 version: '3'
 services:
   es0:
-    image: elasticsearch:8.4.0
+    image: elasticsearch:8.8.0
     environment:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ports:
@@ -9,5 +9,21 @@ services:
     volumes:
       - ./es0.yml:/usr/share/elasticsearch/config/elasticsearch.yml
       - ./elasticsearch.keystore:/usr/share/elasticsearch/config/elasticsearch.keystore
-      - ./log4j2.properties:/usr/share/elasticsearch/config/log4j2.properties 
-
+      - ./log4j2.properties:/usr/share/elasticsearch/config/log4j2.properties
+      - ./service_tokens:/usr/share/elasticsearch/config/service_tokens 
+    networks:
+      - esnet
+  kibana:
+    image: kibana:8.8.0 #docker.elastic.co/kibana/kibana:8.10.0-SNAPSHOT
+    container_name: kibana_8x
+    ports:
+      - "5601:5601"
+    volumes:
+      - ./kibana.yml:/usr/share/kibana/config/kibana.yml 
+    depends_on:
+      - es0
+    networks:
+      - esnet     
+     
+networks:
+  esnet:
