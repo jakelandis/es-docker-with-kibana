@@ -1,7 +1,7 @@
 version: '3'
 services:
   es0:
-    image: elasticsearch:8.8.0
+    image: elasticsearch:9.0.1
     environment:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ports:
@@ -14,8 +14,8 @@ services:
     networks:
       - esnet
   kibana:
-    image: kibana:8.8.0 
-    container_name: kibana_8x
+    image: kibana:9.0.1 
+    container_name: kibana_9x
     ports:
       - "5601:5601"
     volumes:
