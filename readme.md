@@ -1,7 +1,7 @@
 ### Usage
 
 ```bash
-# rm -rf /tmp/es0 #only to start fresh
+# rm -rf ./temp/es0 #only to start fresh
 docker-compose up
 curl -u elastic:changeme http://localhost:9200
 open http://localhost:5601 #elastic/change 
@@ -9,11 +9,8 @@ open http://localhost:5601 #elastic/change
 
 ### Data
 
-The data directory is set to `/tmp/es0`, which means that it be 
-deleted on restart or other cleanup of the `/tmp`  directories.  
-
-It is suggested to change this to a different directory if the
-data should survive a restart. 
+The data directory is set to `./temp/es0`. 
+Delete this directory for a clean start. Do not commit this to repository. 
 
 ### Keystore
 

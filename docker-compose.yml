@@ -11,7 +11,7 @@ services:
       - ./elasticsearch.keystore:/usr/share/elasticsearch/config/elasticsearch.keystore
       - ./log4j2.properties:/usr/share/elasticsearch/config/log4j2.properties
       - ./service_tokens:/usr/share/elasticsearch/config/service_tokens 
-      - ./tmp/es0:/usr/share/elasticsearch/data
+      - ./temp/es0:/usr/share/elasticsearch/data
     networks:
       - esnet
   kibana:
